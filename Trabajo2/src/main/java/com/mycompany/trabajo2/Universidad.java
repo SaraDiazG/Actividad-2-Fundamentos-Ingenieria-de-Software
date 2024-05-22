@@ -19,7 +19,7 @@ public class Universidad {
     private List <PersonalAdministrativo> plantilla = new ArrayList();     
     //Usamos un set para que no se dupliquen las titulaciones de una universidad y los alumnos
     private HashSet <TituloAcademico> titulaciones = new HashSet<TituloAcademico>();
-    private HashSet <Estudiante> alumnos = new HashSet<TituloAcademico>();
+    private HashSet <Estudiante> alumnos = new HashSet<Estudiante>();
     
      public Universidad(int idUniversidad, String nombre) {
         this.id_universidad = idUniversidad;
@@ -28,23 +28,23 @@ public class Universidad {
     
     
     //Creamos un titulo y lo añadimos a los titulos que dispone la universidad y a la blockchain
-    public TituloAcademico emitir_titulo(PersonalAdministrativo encargado_titulo){
+    public TituloAcademico emitirTitulo(PersonalAdministrativo encargadoTitulo){
         Scanner s = new Scanner(System.in);
-        int codigo_titulo = titulaciones.size() + 1;
+        int codigoTitulo = titulaciones.size() + 1;
         
-        System.out.println("El encargado de emitir este titulo es : " + encargado_titulo);
+        System.out.println("El encargado de emitir este titulo es : " + encargadoTitulo);
         
         System.out.println("Introduzca nombre de titulo: ");  
-        String nombre_titulo = s.nextLine();
+        String nombreTitulo = s.nextLine();
         //Comprobamos si el titulo esta ya en el listado de titulaciones de la universidad
         for (TituloAcademico titulo : titulaciones) {
-            if (titulo.getNombre_titulo().equals(nombre_titulo)) {
+            if (titulo.getNombre_titulo().equals(nombreTitulo)) {
                 System.out.println("Ese titulo ya existe en el listado. ");
                  return null;
             }
         }
         
-        TituloAcademico titulo = new TituloAcademico(codigo_titulo, nombre_titulo, id_universidad);
+        TituloAcademico titulo = new TituloAcademico(codigoTitulo, nombreTitulo, id_universidad);
         titulaciones.add(titulo);
         titulo.registrarEnblockchain();
     return titulo;
@@ -52,14 +52,14 @@ public class Universidad {
     }
     
     //Creamos un estudiante y lo añadimos a los alumnos de la universidad y a la blockchain
-    public Estudiante añadir_estudiante(){
+    public Estudiante añadirEstudiante(){
         Scanner s = new Scanner(System.in);
         System.out.println("Introduzca nombre de alumno: ");  
-        String nombre_alumno = s.nextLine();
+        String nombreAlumno = s.nextLine();
         
         //Comprobamos si el alumno esta ya en el listado de titulaciones de la universidad
         for (Estudiante alumno : alumnos) {
-            if (alumno.getNombre().equals(nombre_alumno)) {
+            if (alumno.getNombre().equals(nombreAlumno)) {
                 System.out.println("Ese alumno ya existe en el listado. ");
                  return null;
             }
@@ -67,8 +67,8 @@ public class Universidad {
         System.out.println("Introduzca email de alumno: ");  
         String email_alumno = s.nextLine();
 
-        Estudiante estudiante = new Estudiante(nombre_alumno, email_alumno);
-        estudiante.add(alumno);
+        Estudiante estudiante = new Estudiante(nombreAlumno, email_alumno);
+        alumnos.add(estudiante);
         estudiante.registrar_blockchain();
         
         return estudiante;

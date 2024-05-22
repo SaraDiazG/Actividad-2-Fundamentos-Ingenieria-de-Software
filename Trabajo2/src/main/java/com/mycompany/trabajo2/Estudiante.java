@@ -35,7 +35,7 @@ public class Estudiante {
     }
     
     public void compartirTitulo(){
-        System.out.println("El alumno entrega de manera fisica o telematicamente sus titulos y codigos QR al empleador");
+        System.out.println("El alumno entrega de manera fisica o telematicamente sus titulos y codigos QR al empleador"); //aca esto se podría ver mejor como el envio de un link, no?
     
     }
 
@@ -58,6 +58,20 @@ public class Estudiante {
      */
     public String getEmail() {
         return email;
+    }
+
+    //Algunos metodos para agregar eliminar o recuperar titulos
+
+    public void agregarTitulo(TituloAcademico titulo) {
+        titulos.add(titulo);
+    }
+
+    public void eliminarTitulo(TituloAcademico titulo) {
+        titulos.remove(titulo);
+    }
+
+    public List<TituloAcademico> getTitulos() {
+        return titulos;
     }
     
 }
