@@ -22,5 +22,7 @@ public class Empleador {
         this.id_empleador = idEmpleador;
         this.nombre = nombre;
     }
+      
+      
     
 }
