@@ -5,6 +5,7 @@
 package com.mycompany.trabajo2;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 /**
  *
  * @author Usuario
@@ -16,22 +17,47 @@ public class Estudiante {
     private List <TituloAcademico> titulos = new ArrayList();
     
     
-    public Estudiante(int idEstudiante, String nombre, String email) {
-        this.id_estudiante = idEstudiante;
+    public Estudiante(String nombre, String email) {
+        this.id_estudiante = ThreadLocalRandom.current().nextInt(10000000, 100000000);;
         this.nombre = nombre;
         this.email = email;
     }
     
     
+    public void registrar_blockchain(){
     
+    SistemasBlockchain.alumnos.add(this);
+    
+    }
     public TituloAcademico solicitarTitulo(){
         return null;
     
     }
     
-    public TituloAcademico compartirTitulo(){
-        return null;
+    public void compartirTitulo(){
+        System.out.println("El alumno entrega de manera fisica o telematicamente sus titulos y codigos QR al empleador");
     
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @return the id_estudiante
+     */
+    public int getId_estudiante() {
+        return id_estudiante;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
     }
     
 }

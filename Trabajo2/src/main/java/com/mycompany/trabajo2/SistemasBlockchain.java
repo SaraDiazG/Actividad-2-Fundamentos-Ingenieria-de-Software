@@ -11,28 +11,21 @@ import java.util.HashSet;
  * @author Usuario
  */
 public class SistemasBlockchain {
-    private int id_blockchain;
     
-    private HashSet <TituloAcademico> titulacionesguardadas =  new HashSet<TituloAcademico>();
-    private HashSet <Estudiante> alumnos =  new HashSet<TituloAcademico>();
-    private HashSet <TituloAcademico> alumnos_titulos =  new HashSet<TituloAcademico>();
     
-     public SistemasBlockchain(int idBlockchain) {
-        this.id_blockchain = idBlockchain;
-    }
+    public static HashSet <TituloAcademico> titulacionesguardadas =  new HashSet<TituloAcademico>();
+    public static HashSet <Estudiante> alumnos =  new HashSet<TituloAcademico>();
+    public static  HashSet <TituloAcademico> alumnos_titulos =  new HashSet<TituloAcademico>();
     
-    public String registrarTituloAlumno(TituloAcademico titulo, Estudiante estudiante) {
-        if (titulacionesGuardadas.contains(titulo) && alumnos.contains(estudiante)) {
-            alumnos_titulos.add(titulo);
-            return "Título registrado correctamente";
-        } else {
-            return "Error al registrar el título";
-        }
+    
+    
+    public String registrar_titulo_alumno(TituloAcademico titulo, Estudiante estudiante) {
+      
     }
     //Devuelve True si el titulo esta en la blockchain y el alumno lo tiene
-    public boolean verificarTitulo(TituloAcademico titulo, Estudiante estudiante){
-     return alumnos_tituloss.contains(titulo);
-    
+    public boolean verificar_titulo(TituloAcademico titulo, Estudiante estudiante){
+     
+    return false;
     }
     
     
