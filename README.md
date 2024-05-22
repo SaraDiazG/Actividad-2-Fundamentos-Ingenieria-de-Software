@@ -1,2 +1,4 @@
 # Actividad-2-Fundamentos-Ingenieria-de-Software
+
 Curso: Fundamento de Ingeniería de Software
+Programa python o Java con las funciones necesarias implementadas y listo para su funcionamiento. Utilizando las clases y relaciones definidas en el diagrama de clases, implementa el proceso en un archivo en Python (u otro lenguaje orientado a objetos si prefieres) siguiendo las buenas prácticas de programación y utilizando los conceptos de encapsulamiento, herencia, polimorfismo y abstracción según sea necesario. Utiliza la lógica del diagrama de secuencia para guiar la implementación de cada método y la interacción entre objetos. Se valorarán comentarios explicando el código. Los aspectos relacionados con IA son de carácter opcional y puede ser simulados mediante una clase que contenga métodos vacíos. 
