@@ -5,7 +5,7 @@
 package com.mycompany.trabajo2;
 
 import java.util.HashSet;
-
+import java.util.HashMap;
 /**
  *
  * @author Usuario
@@ -14,18 +14,40 @@ public class SistemasBlockchain {
     
     
     public static HashSet <TituloAcademico> titulacionesguardadas =  new HashSet<TituloAcademico>();
-    public static HashSet <Estudiante> alumnos =  new HashSet<TituloAcademico>();
-    public static  HashSet <TituloAcademico> alumnos_titulos =  new HashSet<TituloAcademico>();
+    public static HashSet <Estudiante> alumnos =  new HashSet<Estudiante>();
+    public static HashMap<Integer, HashMap<Integer, String>> alumno_titulos= new HashMap();
     
-    
-    
-    public String registrar_titulo_alumno(TituloAcademico titulo, Estudiante estudiante) {
-      
+    //Asignamos una union alumno-tiulaciones, comprueba si el titulo y el alumno estan en sus blockchain y despues los une, si no esta ese alumno lo registra.
+    public void registrar_titulo_alumno(TituloAcademico titulo, Estudiante estudiante) {
+       int id_estudiante = estudiante.getId_estudiante();
+       int id_titulo = titulo.getId_titulo();
+       String codigoQR = id_titulo + "-" + id_estudiante;
+       
+       
+       //Comprobamos si el alumno esta en el listado
+       if (!alumnos.contains(estudiante)) {
+             System.out.println("El alumno no esta en el listado");
+        }//Comprobamos si el titulo esta en el listado
+          if (!titulacionesguardadas.contains(titulo)) {
+              System.out.println("El título no está en el conjunto de titulaciones guardadas.");
+        }//Si la conexion no existe crea el alumno
+        if (!alumno_titulos.containsKey(id_estudiante)) {
+            alumno_titulos.put(id_estudiante, new HashMap<Integer, String>());
+        }
+        //Creamos el registro
+        alumno_titulos.get(id_estudiante).put(id_titulo, codigoQR);
+        System.out.println("Conexion creada con exito.");
     }
-    //Devuelve True si el titulo esta en la blockchain y el alumno lo tiene
-    public boolean verificar_titulo(TituloAcademico titulo, Estudiante estudiante){
-     
-    return false;
+    //Devuelve True si el titulo QR esta en el listado
+    public boolean verificar_titulo(String codigoQR){
+        
+        for (HashMap<Integer, String> map : alumno_titulos.values()) {
+            if (map.containsValue(codigoQR)) {
+                return true;
+            }
+        }
+        return false;  
+        
     }
     
     

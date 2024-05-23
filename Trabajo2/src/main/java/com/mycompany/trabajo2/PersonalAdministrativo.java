@@ -20,10 +20,6 @@ public class PersonalAdministrativo {
         this.universidad_empleo = universidad_empleo;
     }
     
-    public boolean verificarTitulo(TituloAcademico titulo){
-    
-    return false;
-    
-    }
+
     
 }
