@@ -4,6 +4,7 @@
  */
 package com.mycompany.trabajo2;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 /**
@@ -14,13 +15,14 @@ public class Estudiante {
     private String nombre;
     private int id_estudiante;
     private String email;
-    private List <TituloAcademico> titulos = new ArrayList();
+    private List <String> titulos = new ArrayList();
     
     
     public Estudiante(String nombre, String email) {
         this.id_estudiante = ThreadLocalRandom.current().nextInt(10000000, 100000000);;
         this.nombre = nombre;
         this.email = email;
+        this.titulos = solicitarTitulo();
     }
     
     
@@ -29,10 +31,24 @@ public class Estudiante {
     SistemasBlockchain.alumnos.add(this);
     
     }
-    public TituloAcademico solicitarTitulo(){
-        return null;
+    public List<String> solicitarTitulo(){
+    List<String> codigosQR = new ArrayList<>();
+    // Comprobamos si el alumno está en el listado
     
+    if (SistemasBlockchain.alumnos.contains(this)) {
+        // Obtenemos los titulos y los codigos QR asociados al id_alumno
+        HashMap<Integer, String> titulosAlumno = SistemasBlockchain.alumno_titulos.get(this.id_estudiante);
+        //Si titulosAlumnos tiene titulos guardo los QR
+        if (titulosAlumno != null) {
+            codigosQR.addAll(titulosAlumno.values());
+        }
+    } else {
+        System.out.println("El alumno no está en el listado");
     }
+    return codigosQR;
+ }
+    
+    
     
     public void compartirTitulo(){
         System.out.println("El alumno entrega de manera fisica o telematicamente sus titulos y codigos QR al empleador");

@@ -30,7 +30,7 @@ public class Universidad {
     //Creamos un titulo y lo añadimos a los titulos que dispone la universidad y a la blockchain
     public TituloAcademico emitir_titulo(PersonalAdministrativo encargado_titulo){
         Scanner s = new Scanner(System.in);
-        int codigo_titulo = titulaciones.size() + 1;
+        int codigo_titulo = id_universidad + (titulaciones.size() + 1);
         
         System.out.println("El encargado de emitir este titulo es : " + encargado_titulo);
         
@@ -70,7 +70,7 @@ public class Universidad {
         Estudiante estudiante = new Estudiante(nombre_alumno, email_alumno);
         estudiante.add(alumno);
         estudiante.registrar_blockchain();
-        
+        estudiante.solicitarTitulo();
         return estudiante;
  }
 

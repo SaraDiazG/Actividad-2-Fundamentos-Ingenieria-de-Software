@@ -4,6 +4,8 @@
  */
 package com.mycompany.trabajo2;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Usuario
@@ -14,8 +16,16 @@ public class VerificadorIA {
       public VerificadorIA(int idIa) {
         this.id_ia = idIa;
     }
-     public boolean verificarAutentico(String enlace_qr, String datosCifrados) {
-        // Implementación para verificar la autenticidad usando IA
-        return false;
+     public void verificarAutentico(String enlace) {
+        
+        
+        SistemasBlockchain sb = new SistemasBlockchain();
+         boolean b = sb.verificar_titulo(enlace);
+    if (b) {
+        System.out.println("El código QR es auténtico.");
+    } else {
+        System.out.println("El código QR no es auténtico.");
+    }
+        
     }
 }
