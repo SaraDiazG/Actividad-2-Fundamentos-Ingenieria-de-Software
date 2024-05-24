@@ -7,6 +7,7 @@ package com.mycompany.trabajo2;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -19,16 +20,22 @@ public class Universidad {
     private List <PersonalAdministrativo> plantilla = new ArrayList();     
     //Usamos un set para que no se dupliquen las titulaciones de una universidad y los alumnos
     private HashSet <TituloAcademico> titulaciones = new HashSet<TituloAcademico>();
-    private HashSet <Estudiante> alumnos = new HashSet<TituloAcademico>();
+    private HashSet <Estudiante> alumnos = new HashSet<Estudiante>();
     
      public Universidad(int idUniversidad, String nombre) {
         this.id_universidad = idUniversidad;
         this.nombre = nombre;
     }
-    
+    public String getNombre(){
+     return this.nombre;
+    }
+    public HashSet<Estudiante> getAlumnos(){
+    return this.alumnos;
+    }
     
     //Creamos un titulo y lo añadimos a los titulos que dispone la universidad y a la blockchain
-    public TituloAcademico emitir_titulo(PersonalAdministrativo encargado_titulo){
+    public TituloAcademico emitir_titulo(){
+        PersonalAdministrativo encargado_titulo = getPersonalAdministrativoAleatorio();
         Scanner s = new Scanner(System.in);
         int codigo_titulo = id_universidad + (titulaciones.size() + 1);
         
@@ -68,7 +75,7 @@ public class Universidad {
         String email_alumno = s.nextLine();
 
         Estudiante estudiante = new Estudiante(nombre_alumno, email_alumno);
-        estudiante.add(alumno);
+        alumnos.add(estudiante);
         estudiante.registrar_blockchain();
         estudiante.solicitarTitulo();
         return estudiante;
@@ -82,8 +89,17 @@ public class Universidad {
     }
     
     
-    
-    
-    
-    
+    //Solo  a nivel de pruebas
+    public PersonalAdministrativo getPersonalAdministrativoAleatorio() {
+    if (plantilla.isEmpty()) {
+        return null; // o lanzar una excepción si la lista está vacía
+    }
+    Random random = new Random();
+    int indiceAleatorio = random.nextInt(plantilla.size());
+    return plantilla.get(indiceAleatorio);
 }
+    
+    
+    
+    
+} 
