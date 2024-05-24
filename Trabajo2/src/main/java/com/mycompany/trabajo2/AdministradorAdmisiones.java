@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @author Usuario
  */
 public class AdministradorAdmisiones extends PersonalAdministrativo {
-        
+         
     
     public AdministradorAdmisiones(int id_personal, String nombre, Universidad universidad_empleo) {
         super(id_personal, nombre, universidad_empleo);

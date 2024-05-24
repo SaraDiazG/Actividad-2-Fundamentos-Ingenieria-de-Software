@@ -7,7 +7,7 @@ package com.mycompany.trabajo2;
 import java.time.LocalDateTime;
 import java.util.Random;
 
-/**
+/**    
  *
  * @author Usuario
  */

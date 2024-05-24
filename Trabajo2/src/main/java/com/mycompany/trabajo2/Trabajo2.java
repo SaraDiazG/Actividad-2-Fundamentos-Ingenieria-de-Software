@@ -15,6 +15,8 @@ import java.util.ArrayList;
  */
 public class Trabajo2 {
    
+    
+    
     public static HashSet <Universidad> universidades = new HashSet<>();
     public static void main(String[] args) {
         Trabajo2 app = new Trabajo2();

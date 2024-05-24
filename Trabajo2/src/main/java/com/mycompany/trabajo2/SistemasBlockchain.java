@@ -23,6 +23,8 @@ public class SistemasBlockchain {
        
     
     
+    
+    
     //Asignamos una union alumno-tiulaciones, comprueba si el titulo y el alumno estan en sus blockchain y despues los une, si no esta ese alumno lo registra.
     public void registrar_titulo_alumno(TituloAcademico titulo, Estudiante estudiante) {
        int id_estudiante = estudiante.getId_estudiante();
