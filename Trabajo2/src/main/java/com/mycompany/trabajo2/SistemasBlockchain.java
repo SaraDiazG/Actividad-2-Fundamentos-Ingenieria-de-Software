@@ -20,6 +20,7 @@ public class SistemasBlockchain {
     public static HashSet <Estudiante> alumnos =  new HashSet<Estudiante>();
     public static HashMap<Integer, HashMap<Integer, String>> alumno_titulos= new HashMap();
    
+       
     
     
     //Asignamos una union alumno-tiulaciones, comprueba si el titulo y el alumno estan en sus blockchain y despues los une, si no esta ese alumno lo registra.

@@ -24,7 +24,7 @@ public class Empleador {
          v.verificarAutentico(enlace);
      
      
-     }
+     }  
      
       public Empleador(int idEmpleador, String nombre) {
         this.id_empleador = idEmpleador;
