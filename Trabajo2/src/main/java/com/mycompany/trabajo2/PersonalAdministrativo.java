@@ -19,7 +19,5 @@ public class PersonalAdministrativo {
         this.nombre = nombre;
         this.universidad_empleo = universidad_empleo;
     }
-    
-
-    
+   
 }

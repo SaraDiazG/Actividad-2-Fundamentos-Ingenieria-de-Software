@@ -22,7 +22,6 @@ public class Universidad {
     private HashSet <TituloAcademico> titulaciones = new HashSet<TituloAcademico>();
     private HashSet <Estudiante> alumnos = new HashSet<Estudiante>();
     
-    
      public Universidad(int idUniversidad, String nombre) {
         this.id_universidad = idUniversidad;
         this.nombre = nombre;

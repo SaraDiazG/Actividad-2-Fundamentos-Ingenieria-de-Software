@@ -37,9 +37,6 @@ public class TituloAcademico {
     /**
      * @return the codigoQR
      */
- 
-    
-    
     
     
     

@@ -21,9 +21,7 @@ public class Estudiante {
     private String email;
     private HashSet <String> titulos = new HashSet();
     
-     
-    
-    
+
     public Estudiante(String nombre, String email) {
         this.id_estudiante = random.nextInt(10000);
         this.nombre = nombre;

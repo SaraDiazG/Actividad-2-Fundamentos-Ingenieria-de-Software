@@ -22,8 +22,6 @@ public class Empleador {
         
          VerificadorIA v = new VerificadorIA(1);
          v.verificarAutentico(enlace);
-     
-     
      }   
      
       public Empleador(int idEmpleador, String nombre) {
