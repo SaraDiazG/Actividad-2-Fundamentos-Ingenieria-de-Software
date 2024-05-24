@@ -22,6 +22,7 @@ public class Universidad {
     private HashSet <TituloAcademico> titulaciones = new HashSet<TituloAcademico>();
     private HashSet <Estudiante> alumnos = new HashSet<Estudiante>();
     
+    
      public Universidad(int idUniversidad, String nombre) {
         this.id_universidad = idUniversidad;
         this.nombre = nombre;
@@ -87,7 +88,12 @@ public class Universidad {
     public void setPlantilla(List <PersonalAdministrativo> plantilla) {
         this.plantilla = plantilla;
     }
-    
+    public void setTitulaciones(HashSet <TituloAcademico> titulaciones) {
+        this.titulaciones = titulaciones;
+    }
+    public void setEstudiantes(HashSet <Estudiante> estudiantes) {
+        this.alumnos = estudiantes;
+    }
     
     //Solo  a nivel de pruebas
     public PersonalAdministrativo getPersonalAdministrativoAleatorio() {

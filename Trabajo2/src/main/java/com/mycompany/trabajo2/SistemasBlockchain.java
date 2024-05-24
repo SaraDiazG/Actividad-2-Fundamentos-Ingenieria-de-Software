@@ -4,8 +4,11 @@
  */
 package com.mycompany.trabajo2;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 /**
  *
  * @author Usuario
@@ -16,6 +19,8 @@ public class SistemasBlockchain {
     public static HashSet <TituloAcademico> titulacionesguardadas =  new HashSet<TituloAcademico>();
     public static HashSet <Estudiante> alumnos =  new HashSet<Estudiante>();
     public static HashMap<Integer, HashMap<Integer, String>> alumno_titulos= new HashMap();
+   
+    
     
     //Asignamos una union alumno-tiulaciones, comprueba si el titulo y el alumno estan en sus blockchain y despues los une, si no esta ese alumno lo registra.
     public void registrar_titulo_alumno(TituloAcademico titulo, Estudiante estudiante) {
@@ -50,5 +55,30 @@ public class SistemasBlockchain {
         
     }
     
-    
+ // Funciones solo visuales 
+    public static TituloAcademico getTituloAleatorio() {
+    if (titulacionesguardadas.isEmpty()) {
+        return null; // o lanzar una excepción si deseas
+    }
+    List<TituloAcademico> lista = new ArrayList<>(titulacionesguardadas);
+    Random random = new Random();
+    int index = random.nextInt(lista.size());
+    return lista.get(index);
 }
+    public static Estudiante getEstudianteAleatorio() {
+    if (alumnos.isEmpty()) {
+        return null; // o lanzar una excepción si deseas
+    }
+    List<Estudiante> lista = new ArrayList<>(alumnos);
+    Random random = new Random();
+    int index = random.nextInt(lista.size());
+    return lista.get(index);
+    }
+    
+        
+}
+    
+
+
+     
+

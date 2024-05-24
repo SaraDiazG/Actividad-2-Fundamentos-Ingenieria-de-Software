@@ -7,12 +7,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 /**
  *
  * @author Usuario
  */
 public class Estudiante {
+    private static final Random random = new Random();
     private String nombre;
     private int id_estudiante;
     private String email;
@@ -20,7 +23,7 @@ public class Estudiante {
     
     
     public Estudiante(String nombre, String email) {
-        this.id_estudiante = ThreadLocalRandom.current().nextInt(10000000, 100000000);;
+        this.id_estudiante = random.nextInt(10000);
         this.nombre = nombre;
         this.email = email;
         this.titulos = solicitarTitulo();
@@ -92,5 +95,28 @@ public class Estudiante {
     public String getEmail() {
         return email;
     }
+    //Solo con fines de hacer pruebas
+    @Override
+public boolean equals(Object obj) {
+    if (obj == null) {
+        return false;
+    }
+    if (getClass() != obj.getClass()) {
+        return false;
+    }
+    final Estudiante other = (Estudiante) obj;
+    if (!Objects.equals(this.nombre, other.nombre)) {
+        return false;
+    }
+    return true;
+}
+
+@Override
+public int hashCode() {
+    int prime = 31;
+    int result = 1;
+    result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+    return result;
+}
     
 }
