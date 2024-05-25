@@ -47,24 +47,28 @@ public class Trabajo2 {
         titulaciones.add(titulo1);
         titulaciones.add(titulo2);
         titulaciones.add(titulo3);
+       
         estudiantes.add(s1);
         estudiantes.add(s2);
         viu.setEstudiantes(estudiantes);
         viu.setTitulaciones(titulaciones);
+      
+        
          
                  //Uniones aleatorias
         SistemasBlockchain s = new SistemasBlockchain();
+        s.setAlumnos(estudiantes);
+        s.setTitulacionesguardadas(titulaciones);
         TituloAcademico t1 = s.getTituloAleatorio();
         TituloAcademico t2 = s.getTituloAleatorio();
         TituloAcademico t3 = s.getTituloAleatorio();
         Estudiante a1 = s.getEstudianteAleatorio();
         Estudiante a2 = s.getEstudianteAleatorio();
-        
-      
-        
-        
-  
-        
+        s.registrar_titulo_alumno(t1, a1);
+        s.registrar_titulo_alumno(t2, a2);
+        s.registrar_titulo_alumno(t3, a1);
+        s1.solicitarTitulo();
+        s1.verTitulos();
         // Llamamos al menú principal
         app.menu();
     }
@@ -92,8 +96,10 @@ public class Trabajo2 {
     Universidad uni = comprobar_universidad(nombre_universidad, universidades);
     if (uni != null) {
         System.out.println("Introduzca su nombre : ");
-        nombre_estudiante = new Scanner(System.in).next();
+        nombre_estudiante = new Scanner(System.in).nextLine();
         Estudiante estudiante = comprobar_estudiante(nombre_estudiante, uni);
+        System.out.println("Bienvenido " + estudiante.getNombre());
+        
         if (estudiante != null) {
             System.out.println("Seleccione accion: ");
             System.out.println("1. Compartir título.");
@@ -103,7 +109,7 @@ public class Trabajo2 {
             if (opcion == 1) {
                 estudiante.compartirTitulo();
             } else if (opcion == 2) {
-                estudiante.compartirTitulo();
+                estudiante.solicitarTitulo();
             } else if (opcion == 3) {
                 estudiante.registrar_blockchain();
             }
@@ -150,16 +156,18 @@ public class Trabajo2 {
             }
         }
     }
+    
 public Estudiante comprobar_estudiante(String nombre, Universidad uni) {
-    Estudiante estudiante = null;
-    for (Estudiante e : uni.getAlumnos()) {
-        if (e.getNombre().equals(nombre)) {
-            System.out.println("El estudiante está en el listado.");
-            estudiante = e;
-            break;
+    for (Estudiante estudiante : uni.getAlumnos()) {
+        
+        String nombreEstudiante = estudiante.getNombre().replaceAll("\\s", "").toLowerCase();
+        String nombreBuscado = nombre.replaceAll("\\s", "").toLowerCase();
+        if (nombreEstudiante.equals(nombreBuscado)) {
+            return estudiante;
         }
     }
-    return estudiante;
+    System.out.println("No se encontró el estudiante " + nombre + " en la universidad " + uni.getNombre());
+    return null;
 }
     
   public Universidad comprobar_universidad(String nombre, HashSet<Universidad> universidades){

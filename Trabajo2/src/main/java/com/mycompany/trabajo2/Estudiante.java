@@ -26,36 +26,40 @@ public class Estudiante {
         this.id_estudiante = random.nextInt(10000);
         this.nombre = nombre;
         this.email = email;
-        this.titulos = solicitarTitulo();
+        
     }
     
     
     public void registrar_blockchain(){
     
     
-    SistemasBlockchain.alumnos.add(this);
+    SistemasBlockchain.getAlumnos().add(this);
     System.out.println("Esta usted registrado en el sistema BlockChain.");
     }
     
     
+    public void verTitulos(){
+    for (String codigo: titulos){
+        System.out.println("Codigo :" + codigo);
+    }
     
+    }
     
-    public HashSet<String> solicitarTitulo(){
-    HashSet<String> codigosQR = new HashSet();
+    public void solicitarTitulo() {
     // Comprobamos si el alumno está en el listado
-    
-    if (SistemasBlockchain.alumnos.contains(this)) {
+    HashMap<Integer, HashMap<Integer, String>> titulaciones = SistemasBlockchain.getAlumno_titulos();
+    if (titulaciones.containsKey(this.id_estudiante)) {
         // Obtenemos los titulos y los codigos QR asociados al id_alumno
-        HashMap<Integer, String> titulosAlumno = SistemasBlockchain.alumno_titulos.get(this.id_estudiante);
+        HashMap<Integer, String> titul_codigo = titulaciones.get(this.id_estudiante);
         //Si titulosAlumnos tiene titulos guardo los QR
-        if (titulosAlumno != null) {
-            codigosQR.addAll(titulosAlumno.values());
+        if (titul_codigo != null) {
+            this.titulos.clear(); 
+            this.titulos.addAll(titul_codigo.values()); 
         }
     } else {
         System.out.println("El alumno no está en el listado");
     }
-    return codigosQR;
- }
+}
     
     
     
@@ -63,16 +67,17 @@ public class Estudiante {
         System.out.println("El alumno entrega de manera fisica o telematicamente sus titulos y codigos QR al empleador");
         if (titulos != null){
         System.out.println("Listas de codigosQR: ");
-         int i = 1;
+         
         for (String titulo : titulos) {
-            System.out.println(i + "." + titulo);
-            i++;
+            System.out.println("Codigo : "  + titulo );
+            
     }
-        }else 
+        }else {
             System.out.println("No hay ningun titulo en el listado");
+             }
             Trabajo2 t = new Trabajo2();
             t.menu();
-            
+       
     }
 
     /**
@@ -96,27 +101,7 @@ public class Estudiante {
         return email;
     }
     //Solo con fines de hacer pruebas
-    @Override
-public boolean equals(Object obj) {
-    if (obj == null) {
-        return false;
-    }
-    if (getClass() != obj.getClass()) {
-        return false;
-    }
-    final Estudiante other = (Estudiante) obj;
-    if (!Objects.equals(this.nombre, other.nombre)) {
-        return false;
-    }
-    return true;
-}
+    
 
-@Override
-public int hashCode() {
-    int prime = 31;
-    int result = 1;
-    result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-    return result;
-}
     
 }

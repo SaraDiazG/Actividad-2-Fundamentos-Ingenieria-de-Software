@@ -9,6 +9,13 @@ package com.mycompany.trabajo2;
  * @author Usuario
  */
 public class PersonalAdministrativo {
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
     private String nombre;
     private int id_personal;
     private Universidad universidad_empleo;

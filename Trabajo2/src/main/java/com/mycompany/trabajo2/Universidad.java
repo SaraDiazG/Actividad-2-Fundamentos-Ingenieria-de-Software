@@ -35,14 +35,18 @@ public class Universidad {
     
     //Creamos un titulo y lo añadimos a los titulos que dispone la universidad y a la blockchain
     public TituloAcademico emitir_titulo(){
+        for (TituloAcademico t : titulaciones){
+            System.out.println("Titulacion:  " + t.getNombre_titulo());
+        }
         PersonalAdministrativo encargado_titulo = getPersonalAdministrativoAleatorio();
         Scanner s = new Scanner(System.in);
         int codigo_titulo = id_universidad + (titulaciones.size() + 1);
         
-        System.out.println("El encargado de emitir este titulo es : " + encargado_titulo);
+        System.out.println("El encargado de emitir este titulo es : " + encargado_titulo.getNombre());
         
         System.out.println("Introduzca nombre de titulo: ");  
         String nombre_titulo = s.nextLine();
+        
         //Comprobamos si el titulo esta ya en el listado de titulaciones de la universidad
         for (TituloAcademico titulo : titulaciones) {
             if (titulo.getNombre_titulo().equals(nombre_titulo)) {
@@ -52,6 +56,7 @@ public class Universidad {
         }
         
         TituloAcademico titulo = new TituloAcademico(codigo_titulo, nombre_titulo, id_universidad);
+        System.out.println("Titulo guardado Satisfactoriamente");
         titulaciones.add(titulo);
         titulo.registrarEnblockchain();
     return titulo;
@@ -60,6 +65,10 @@ public class Universidad {
     
     //Creamos un estudiante y lo añadimos a los alumnos de la universidad y a la blockchain
     public Estudiante añadir_estudiante(){
+        for (Estudiante e: alumnos){
+            System.out.println(e.getNombre());
+        
+        }
         Scanner s = new Scanner(System.in);
         System.out.println("Introduzca nombre de alumno: ");  
         String nombre_alumno = s.nextLine();

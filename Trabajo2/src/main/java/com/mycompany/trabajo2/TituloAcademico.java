@@ -58,7 +58,7 @@ public class TituloAcademico {
     //Registramos el titulo en la blockchain
     public void registrarEnblockchain(){
     
-    SistemasBlockchain.titulacionesguardadas.add(this);
+    SistemasBlockchain.getTitulacionesguardadas().add(this);
     
     
     }
