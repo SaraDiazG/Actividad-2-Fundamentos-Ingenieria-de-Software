@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -22,9 +22,7 @@ public class Empleador {
         
          VerificadorIA v = new VerificadorIA(1);
          v.verificarAutentico(enlace);
-     
-     
-     }
+     }   
      
       public Empleador(int idEmpleador, String nombre) {
         this.id_empleador = idEmpleador;

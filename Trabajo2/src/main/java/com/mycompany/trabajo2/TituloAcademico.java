@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -7,7 +7,7 @@ package com.mycompany.trabajo2;
 import java.time.LocalDateTime;
 import java.util.Random;
 
-/**
+/**    
  *
  * @author Usuario
  */
@@ -37,9 +37,6 @@ public class TituloAcademico {
     /**
      * @return the codigoQR
      */
- 
-    
-    
     
     
     
@@ -61,7 +58,7 @@ public class TituloAcademico {
     //Registramos el titulo en la blockchain
     public void registrarEnblockchain(){
     
-    SistemasBlockchain.titulacionesguardadas.add(this);
+    SistemasBlockchain.getTitulacionesguardadas().add(this);
     
     
     }
